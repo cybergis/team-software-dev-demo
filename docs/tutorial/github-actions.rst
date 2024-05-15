@@ -79,4 +79,40 @@ At this point, please make your own fork of the repository so you can follow alo
 
     If you click on the Action you can get further details on the Action including all outputs, warnings, duration, etc.
 
-#. **Auto
+#. **Action for Pytest**
+
+    Here is a yaml for running Pytest automatically. Try adding it to your repo
+
+    .. code-block:: yaml
+
+        name: Pytest
+        on: [push]
+        jobs:
+            build:
+                runs-on: ubuntu-latest
+                strategy:
+                    matrix:
+                        python-version: [ 3.12.3 ]
+                steps:
+                - uses: actions/checkout@v2
+                
+                - name: Set up Python
+                    uses: actions/setup-python@v2
+                    with:
+                    python-version: ${{ matrix.python-version }}
+                
+                - name: Install dependencies
+                    run: |
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+                
+                - name: Test with pytest
+                    run: |
+                    pip install pytest pytest-cov
+                    pytest --cov-report=term --cov=mycybergis -s test
+                    coverage report
+
+
+#. **More Actions!**
+
+    There are a wide variety of actions to help you maintain working and well-formatted code. Explore `the Github Actions Marketplace to see the options <https://github.com/marketplace>`_.

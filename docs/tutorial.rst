@@ -21,7 +21,4 @@ To follow along, fork the repository, keeping only the main branch
     tutorial/code-quality
     tutorial/testing
     tutorial/github-actions
-    tutorial/prs-reviews
-    tutorial/releases
-    tutorial/publishing
-    tutorial/advanced-topics
+    tutorial/contributing
