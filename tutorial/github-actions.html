@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Github Actions &mdash; Team Software Dev 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../_static/favico.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Contributing" href="contributing.html" />
+    <link rel="prev" title="2. Testing Code" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Team Software Dev
+              <img src="../_static/favico.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-quality.html">1. Ensuring Code Quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">2. Testing Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Github Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">4. Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">User Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Team Software Dev</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tutorial.html">Tutorial</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Github Actions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/github-actions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="github-actions">
+<h1><span class="section-number">3. </span>Github Actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h1>
+<p>At this point, please make your own fork of the repository so you can follow along with the hands-on portion of the demo. You only need to copy the main branch (see figure below):</p>
+<blockquote>
+<div><figure class="align-default" id="id1">
+<img alt="../_images/ForkingRepo.png" src="../_images/ForkingRepo.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of forking the repo.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<ol class="arabic">
+<li><p><strong>What Are Github Actions?</strong></p>
+<blockquote>
+<div><p>Github Actions are workflows that can be automatically triggered. Examples include:</p>
+<ul class="simple">
+<li><p>Checking code quality.</p></li>
+<li><p>Running automated tests.</p></li>
+<li><p>Building documentation/other websites.</p></li>
+<li><p>Building code artifacts/docker images.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Code Quality Check with Github Actions</strong></p>
+<blockquote>
+<div><p>We can use an existing job <code class="docutils literal notranslate"><span class="pre">flake8-lint</span></code> to run a simple Github Action that will automatically check the code quality of our work going forward!</p>
+<p>We will be using the simple action below. You can name an action whatever you want and we can specify which actions we would like to trigger our job. In our case, all pushes and pull requests will trigger the job which is convenient to ensure that new submissions maintain our code quality.</p>
+<p>Then, we specify the jobs to run. Our only job here is named <code class="docutils literal notranslate"><span class="pre">flake8-lint</span></code>. This job runs on an ubuntu-latest “runner” (a virtual machine specified by Github) and we can provide the job with a name/label as well. Then, we specify the step in our job:</p>
+<ol class="arabic simple">
+<li><p>Check out the repo (we need the code to check its quality!). <a class="reference external" href="https://github.com/actions/checkout">The checkout action is here</a>.</p></li>
+<li><p>Setup the Python environment (using the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>). <a class="reference external" href="https://github.com/actions/setup-python">The setup-python action is here</a>.</p></li>
+<li><p>Run our flake8 check. <a class="reference external" href="https://github.com/py-actions/flake8">The flake8 action is here</a>.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python Code Quality</span>
+
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">flake8-lint</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python Code Quality</span>
+<span class="w">        </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check out source repository</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python environment</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.x&quot;</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 Lint Check</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">py-actions/flake8@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mycybergis&quot;</span>
+<span class="w">            </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;--ignore=E501,E722,F403,F405&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Running Our Action</strong></p>
+<blockquote>
+<div><p>Copy and paste the action from the yaml code block above. On the Github webpage for your fork, click “Add file” in the top-right, then select “Create new file” (you can also add this other ways).</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CreateNewFile.png" src="../_images/CreateNewFile.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot ofcreating a new file.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Paste the yaml code block into the editor and name your file <code class="docutils literal notranslate"><span class="pre">.github/workflows/CodeQuality.yaml</span></code>. By placing this yaml file in <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code>, Github will recognize the file as an Action.</p>
+<p>Commit your changes and go to the Actions tab on your repo to see the action being run!</p>
+</div></blockquote>
+</li>
+<li><p><strong>Checking On Your Action</strong></p>
+<blockquote>
+<div><p>On the Actions tab you should be able to see the results of your Action’s run.</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/ActionResults.png" src="../_images/ActionResults.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of Action results.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you click on the Action you can get further details on the Action including all outputs, warnings, duration, etc.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Action for Pytest</strong></p>
+<blockquote>
+<div><p>Here is a yaml for running Pytest automatically. Try adding it to your repo</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pytest</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">        </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">3.12.3</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="w">            </span><span class="no">pip install -r requirements.txt</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">pip install pytest pytest-cov</span>
+<span class="w">            </span><span class="no">pytest --cov-report=term --cov=mycybergis -s test</span>
+<span class="w">            </span><span class="no">coverage report</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>More Actions!</strong></p>
+<blockquote>
+<div><p>There are a wide variety of actions to help you maintain working and well-formatted code. Explore <a class="reference external" href="https://github.com/marketplace">the Github Actions Marketplace to see the options</a>.</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="testing.html" class="btn btn-neutral float-left" title="2. Testing Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="4. Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alexander Michels.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

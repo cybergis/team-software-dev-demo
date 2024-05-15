@@ -7,6 +7,12 @@ This tutorial walks through the basics of team software development with a very 
    
     **Before you start,** please setup a Github account, an environment with Git and have some kind of Python package management software. I recommend `venv <https://docs.python.org/3/library/venv.html>`_ or `conda <https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html>`_. Optionally, you can install `act <https://nektosact.com/installation/index.html>`_ to test out your workflows locally.
 
+To follow along, fork the repository, keeping only the main branch
+
+    .. figure:: _static/img/ForkingRepo.png
+
+        A screenshot of forking the repo.
+
 .. toctree::
     :maxdepth: 2
     :numbered:
@@ -15,7 +21,4 @@ This tutorial walks through the basics of team software development with a very 
     tutorial/code-quality
     tutorial/testing
     tutorial/github-actions
-    tutorial/prs-reviews
-    tutorial/releases
-    tutorial/publishing
-    tutorial/advanced-topics
+    tutorial/contributing
