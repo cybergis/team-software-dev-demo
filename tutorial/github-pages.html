@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deploying to Github Pages &mdash; Team Software Dev 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../_static/favico.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Team Software Dev
+              <img src="../_static/favico.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">User Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Team Software Dev</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Deploying to Github Pages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/github-pages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deploying-to-github-pages">
+<h1>Deploying to Github Pages<a class="headerlink" href="#deploying-to-github-pages" title="Link to this heading"></a></h1>
+<p>We are going to deploy our site to Github Pages using Github Actions.</p>
+<ol class="arabic">
+<li><p><strong>Actions and Workflows</strong></p>
+<p>Github has created a good video covering Github Actions (I promise this one isn’t a rickroll):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cP0I9w2coGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The Github Docs <a class="reference external" href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">Understanding Github Actions</a> page is helpful, as is the <a class="reference external" href="https://docs.github.com/en/actions/using-workflows">Using workflows</a> page. For a hands-on tutorial, checkout <a class="reference external" href="https://docs.github.com/en/actions/quickstart">Quickstart for Github Action</a></p>
+</div>
+</li>
+<li><p><strong>Workflow for Building Site and Pushing</strong></p>
+<p>The workflow below can be used for building a sphinx site and pushing it to Github:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name: Sphinx build
+
+on: push
+
+jobs:
+  sphinx-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build HTML
+      with:
+        pre-build-command: &quot;apt install -y pandoc&quot;
+      uses: ammaraskar/sphinx-action@0.4
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: html-docs
+        path: docs/_build/html/
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == &#39;refs/heads/main&#39;
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html
+</pre></div>
+</div>
+<p>Let’s break down the steps:</p>
+<ol class="arabic simple">
+<li><p>First, we checkout the repo.</p></li>
+<li><p>Next, we build the sphinx page. By default, it will install packages within <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code>, but we also need the container to install pandocs for everything to work.</p></li>
+<li><p>Next, we upload the built site.</p></li>
+<li><p>Deploy the site.</p></li>
+</ol>
+</li>
+<li><p><strong>Adding This Workflow to Your Repo</strong></p>
+<p>Let’s create a folder (in <code class="docutils literal notranslate"><span class="pre">github-pages-demo</span></code>, not <code class="docutils literal notranslate"><span class="pre">docs</span></code>) called “.github” and then a folder within that called “workflows”. Within that folder, create a file called “SphinxBuild.yml” and copy/paste the above code into.</p>
+</li>
+<li><p><strong>Pushing The Repo</strong></p>
+<p>Add and commit your changes, then push it!:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Let’s check on our repo to see if the action ran. Go to Github and find your fork of the repo. You should see an “Actions” tab. We can see our Actions here:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/GithubActionsPage.png" src="../_images/GithubActionsPage.png" />
+<figcaption>
+<p><span class="caption-text">The Github Actions page for the repo.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can also click on workflow runs to get details and logs on your workflows as shown below:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CheckingJobLogs.png" src="../_images/CheckingJobLogs.png" />
+<figcaption>
+<p><span class="caption-text">Workflow details</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Github Pages</strong></p>
+<p>Let’s see if our page is up! Go to <code class="docutils literal notranslate"><span class="pre">https://&lt;your</span> <span class="pre">github</span> <span class="pre">username&gt;.github.io/github-pages-demo</span></code>. You should see a 404 eror. That’s because we have to enable Github pages first. However, you go to the repo’s page, you’ll notice a new branch: <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>. This is our built site!</p>
+<p>So how do we get this working? On the Github Repo’s page, go to the “Settings” tab, then in the menu select “Pages”. This should bring you to the page below:</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/SettingsGithubPages.png" src="../_images/SettingsGithubPages.png" />
+<figcaption>
+<p><span class="caption-text">Github Pages page in the Settings of your repo.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Under the “Source” heading you will see a dropdown that says “None”. Click on the dropdown and select “gh-pages” (this is where our workflow uploads the built site). For the folder dropdown, we can leave it as “/ (root)”. When in doubt, you could check that branch to look for where your built site went. Click save. It will take a couple of minutes for the 404 error to go away, but your page should eventually show up!</p>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alexander Michels.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

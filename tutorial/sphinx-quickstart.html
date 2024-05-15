@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sphinx-Quickstart &mdash; Team Software Dev 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../_static/favico.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Team Software Dev
+              <img src="../_static/favico.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">User Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Team Software Dev</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sphinx-Quickstart</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/sphinx-quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sphinx-quickstart">
+<h1>Sphinx-Quickstart<a class="headerlink" href="#sphinx-quickstart" title="Link to this heading"></a></h1>
+<p>First, we are going to setup the basics with the <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> command. <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">The Sphinx “Getting Started” page</a> offers more details beyong this walkthrough.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Before you start,</strong> please setup a Github account, an environment with Git and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx installed</a> and have some kind of Python package management software. I recommend <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> or <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">conda</a>. The tutorial assumes you have Sphinx installed and some way to install Python packages.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unfortunately, Sphinx pages don’t seem to work completely on JupyterHub or Jupyterlab so I recommend doing this work locally. Jupyterlab seems to work for individual simple pages (hence the screenshots below), but not in general.</p>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Fork and clone the repo</strong> The repository for this work is <a class="reference external" href="https://github.com/cybergis/github-pages-demo">https://github.com/cybergis/github-pages-demo</a>. Fork it on Github and clone the fork to your laptop. <strong>It is important that you fork it because later we will be deploying a page with Github Pages.</strong></p></li>
+</ol>
+<p>Open a terminal and change directories to where you want to do this work:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd &lt;some path&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Clone the repository and checkout the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; git clone https://github.com/cybergis/</span>
+
+<span class="go">github-pages-demo</span>
+<span class="go">Cloning into &#39;github-pages-demo&#39;...</span>
+<span class="go">remote: Enumerating objects: 41, done.</span>
+<span class="go">remote: Counting objects: 100% (41/41), done.</span>
+<span class="go">remote: Compressing objects: 100% (32/32), done.</span>
+<span class="go">remote: Total 41 (delta 3), reused 41 (delta 3), pack-reused 0</span>
+<span class="go">Unpacking objects: 100% (41/41), 255.51 KiB | 1.84 MiB/s, done.</span>
+
+<span class="go">&gt; cd github-pages-demo/</span>
+<span class="go">&gt; git checkout main</span>
+
+<span class="go">Switched to branch &#39;main&#39;</span>
+<span class="go">Your branch is up to date with &#39;origin/main&#39;.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>2. <strong>Install packages</strong>
+Create a file called “requirements.txt” in <cite>docs/</cite> and copy/paste the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">folium</span>
+<span class="n">geopandas</span><span class="o">&gt;=</span><span class="mf">0.9.0</span>
+<span class="n">ipython</span>
+<span class="n">ipython_genutils</span>
+<span class="n">ipywidgets</span>
+<span class="n">markupsafe</span><span class="o">==</span><span class="mf">2.0.1</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+<span class="n">nbsphinx</span>
+<span class="n">nbsphinx</span><span class="o">-</span><span class="n">link</span>
+<span class="n">shapely</span>
+<span class="n">sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">markdown</span><span class="o">-</span><span class="n">builder</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+<p>Once you have this file, install the packages with pip:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; pip install -r requirements.txt</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We will use those packages later.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The requirements.txt file needs to be in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder of your repo for when we push everything to Github!</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>`sphinx-quickstart`</strong></p></li>
+</ol>
+<p>Create a folder <code class="docutils literal notranslate"><span class="pre">docs</span></code> within the <code class="docutils literal notranslate"><span class="pre">github-pages-demo</span></code> (the repo) folder:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; mkdir docs</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> command:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; sphinx-quickstart</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The answers to the questions are (or see screenshot below):</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; Separate source and build directories (y/n) [n]: n</span>
+<span class="go">&gt; Project name: &lt;whatever name you want&gt;</span>
+<span class="go">&gt; Author name(s): &lt;your name&gt;</span>
+<span class="go">&gt; Project release []: &lt;whatever version you want&gt;</span>
+<span class="go">&gt; Project language [en]: en (or the language of your choice, but we will use English)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<figure class="align-default" id="id1">
+<img alt="../_images/SphinxQuickstart.png" src="../_images/SphinxQuickstart.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of the sphinx-quickstart command</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p><strong>`make html`</strong></p></li>
+</ol>
+<p>Now, we are going to make the HTML output for the <cite>sphinx-quickstart</cite> output. From within <cite>docs/</cite>:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; make html</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>You can see a screenshot of the output below:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/MakeHtml.png" src="../_images/MakeHtml.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> output.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, let’s check out the result. In the file browser, go to <code class="docutils literal notranslate"><span class="pre">github-pages-demo</span> <span class="pre">&gt;</span> <span class="pre">docs</span> <span class="pre">&gt;</span> <span class="pre">_build</span> <span class="pre">&gt;</span> <span class="pre">html</span></code> and open “index.html”. You can see the output below:</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/FirstHTMLOutput.png" src="../_images/FirstHTMLOutput.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of the HTML output</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p><strong>A few changes to conf.py</strong></p></li>
+</ol>
+<p>Now, there are a few key changes we are going to make to the conf.py file. In the file browser, find “conf.py” at the path: github-pages-demo/docs/conf.py. We are going to make a couple key changes.</p>
+<p>Lines 13-15 should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># import os</span>
+<span class="c1"># import sys</span>
+<span class="c1"># sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span>
+</pre></div>
+</div>
+<p>replace them with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This adds the path “github-pages-demo” folder to the Python path.</p>
+<p>Next, you should see the extensions array in Lines 33-34. Replace it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.githubpages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx_markdown_builder&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;myst_parser&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nbsphinx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nbsphinx_link&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>These are some key extensions and packages we will use for our site.</p>
+<p>Our last change is: replace the <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> (line 63 after the added extensions) with the below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+</pre></div>
+</div>
+<p>This is the Sphinx Read The Docs Theme.</p>
+<p>For fun, you can download a logo image into the <code class="docutils literal notranslate"><span class="pre">docs/_static</span></code> folder and add the lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_favicon</span> <span class="o">=</span> <span class="s1">&#39;_static/favico.ico&#39;</span>  <span class="c1"># change to the name of your image</span>
+<span class="n">html_logo</span> <span class="o">=</span> <span class="s1">&#39;_static/favico.ico&#39;</span>  <span class="c1"># change to the name of your image</span>
+</pre></div>
+</div>
+<p>to your conf.py. This isn’t necessary though. Save these changes.</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>make html: Part 2</strong></p></li>
+</ol>
+<p>Go back to the terminal (and if needed change directories to our docs folder <cite>cd github-pages-demo/docs</cite>). Run the <cite>make html</cite> command again. Now, checkout your index.html file again:</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/SphinxRTD.png" src="../_images/SphinxRTD.png" />
+<figcaption>
+<p><span class="caption-text">A screenshot of the Sphinx Read The Docs Theme.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>NOTE:</strong> If you ever had issues with the page seemingly note updated, check that you’ve saved your files and then you can use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> to clear out the <code class="docutils literal notranslate"><span class="pre">_build</span></code> folder and run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> again to re-build.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alexander Michels.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

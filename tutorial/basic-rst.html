@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro to RST &mdash; Team Software Dev 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../_static/favico.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Team Software Dev
+              <img src="../_static/favico.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">User Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Team Software Dev</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Intro to RST</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/basic-rst.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="intro-to-rst">
+<h1>Intro to RST<a class="headerlink" href="#intro-to-rst" title="Link to this heading"></a></h1>
+<p>Sphinx can use markdown and ReSTructured Text. We will focus on ReSTructured text for now.</p>
+<ol class="arabic">
+<li><p><strong>Basic RST Syntax</strong></p>
+<p>Take a moment to go over these RST Resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">Quick reStructuredText</a></p></li>
+<li><p><a class="reference external" href="https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html">Restructured Text (reST) and Sphinx CheatSheet</a></p></li>
+</ul>
+</li>
+<li><p><strong>RST Hyperlink</strong></p>
+<p>There are <a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html">a variety of ways to link and reference in RST</a>, but we will just quickly review making basic external links.</p>
+<p>The syntax for an external link is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`My Text &lt;https://www.google.com/&gt;`_
+</pre></div>
+</div>
+<p>The above link looks like this: <a class="reference external" href="https://www.google.com/">My Text</a> Try adding a link to your index.rst page.</p>
+</li>
+<li><p><strong>Brief Intro to TOC</strong></p>
+<p>When you open <code class="docutils literal notranslate"><span class="pre">docs/index.rst</span></code> you will see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">maxdepth</span><span class="p">:</span> <span class="mi">2</span>
+   <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">Contents</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>This is a toc (table of contents) tree directive. It links to other pages and defines the tree of pages within your site. <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html">See the Sphinx “Directives” page for more info</a>. If you want to add pages to your site, you add them to a toctree somewhere.</p>
+</li>
+<li><p><strong>Adding a Page</strong></p>
+<p>Now, we will use the toctree to add a page. Within the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder, create a file called “test.rst”. Give it a title by copy/pasting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Test</span>
+<span class="o">====</span>
+</pre></div>
+</div>
+<p>into it and then run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>. What happens?</p>
+<details>
+    <summary>Click after you've run make html</summary>
+    <p>You should see a red warning stating "WARNING: document isn't included in any toctree".</p>
+</details><p>To fix the issue, you add “test” (or the name of your file without the extension) to the toctree in index.rst. So your index.rst should look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. mycybergis documentation master file, created by
+sphinx-quickstart on Thu Jun  2 21:31:49 2022.
+You can adapt this file completely to your liking, but it should at least
+contain the root `toctree` directive.
+
+Welcome to mycybergis&#39;s documentation!
+======================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   test
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://docutils.sourceforge.io/0.4/docs/ref/rst/restructuredtext.html#whitespace">RST is very specific about whitespaces</a>. You want the “test” line to line up with the rest of the toctree directives! If you get errors about it still not being in the toctree, check that you’ve saved your file and that the “test” lines up with the other toctree directives.</p>
+</div>
+<p>Now, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> again, you should see “Test” in your contents. You may notice the sidebar change when click the Test page. Sometimes when you change the toctree, you need to wipe everything (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>) and rebuild (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>) to fix the toctree/sidebar.</p>
+</li>
+<li><p><strong>Adding a Video</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Let’s embed a video! You can do this by adding raw HTML to RST! In our test.rst page, let’s add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">raw</span><span class="p">::</span> <span class="n">html</span>
+
+    <span class="o">&lt;</span><span class="n">iframe</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;560&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;315&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;YouTube video player&quot;</span> <span class="n">frameborder</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">allow</span><span class="o">=</span><span class="s2">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span> <span class="n">allowfullscreen</span><span class="o">&gt;&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output above allows us to put raw HTML into our RST, including an iframe for a video! The output can be seen below:</p>
+<blockquote>
+<div><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>To embed a different video, find it on YouTube, click “Share”, then “Embed”, and copy the iframe.</p>
+</div></blockquote>
+<p><strong>More Info:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/lists.html">Use Lists</a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alexander Michels.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
