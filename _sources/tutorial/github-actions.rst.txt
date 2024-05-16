@@ -101,7 +101,7 @@ The repository can be found here `https://github.com/cybergis/team-software-dev-
                 - name: Set up Python
                     uses: actions/setup-python@v2
                     with:
-                    python-version: ${{ matrix.python-version }}
+                      python-version: ${{ matrix.python-version }}
                 
                 - name: Install dependencies
                     run: |
