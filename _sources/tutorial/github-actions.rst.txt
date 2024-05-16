@@ -97,22 +97,23 @@ The repository can be found here `https://github.com/cybergis/team-software-dev-
                         python-version: [ 3.12.3 ]
                 steps:
                 - uses: actions/checkout@v2
-                
+
                 - name: Set up Python
-                    uses: actions/setup-python@v2
-                    with:
-                      python-version: ${{ matrix.python-version }}
-                
+                  uses: actions/setup-python@v2
+                  with:
+                    python-version: ${{ matrix.python-version }}
+
                 - name: Install dependencies
-                    run: |
+                  run: |
                     python -m pip install --upgrade pip
                     pip install -r requirements.txt
-                
+
                 - name: Test with pytest
-                    run: |
+                  run: |
                     pip install pytest pytest-cov
                     pytest --cov-report=term --cov=mycybergis -s test
                     coverage report
+
 
 
 #. **More Actions!**
