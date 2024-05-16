@@ -13,6 +13,8 @@ To follow along, fork the repository, keeping only the main branch
 
         A screenshot of forking the repo.
 
+The repository can be found here `https://github.com/cybergis/team-software-dev-demo <https://github.com/cybergis/team-software-dev-demo>`_
+
 .. toctree::
     :maxdepth: 2
     :numbered:

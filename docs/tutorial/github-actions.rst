@@ -8,6 +8,8 @@ At this point, please make your own fork of the repository so you can follow alo
 
         A screenshot of forking the repo.
 
+The repository can be found here `https://github.com/cybergis/team-software-dev-demo <https://github.com/cybergis/team-software-dev-demo>`_
+
 #. **What Are Github Actions?**
 
     Github Actions are workflows that can be automatically triggered. Examples include:
