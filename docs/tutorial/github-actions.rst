@@ -43,16 +43,16 @@ The repository can be found here `https://github.com/cybergis/team-software-dev-
                 name: Python Code Quality
                 steps:
                 - name: Check out source repository
-                uses: actions/checkout@v2
+                  uses: actions/checkout@v2
 
                 - name: Set up Python environment
-                uses: actions/setup-python@v2
-                with:
+                  uses: actions/setup-python@v2
+                  with:
                     python-version: "3.x"
 
                 - name: flake8 Lint Check
-                uses: py-actions/flake8@v1
-                with:
+                  uses: py-actions/flake8@v1
+                  with:
                     path: "mycybergis"
                     args: "--ignore=E501,E722,F403,F405"
 
